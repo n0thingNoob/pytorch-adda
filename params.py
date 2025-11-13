@@ -4,8 +4,9 @@
 data_root = "data"
 dataset_mean_value = 0.5
 dataset_std_value = 0.5
-dataset_mean = (dataset_mean_value, dataset_mean_value, dataset_mean_value)
-dataset_std = (dataset_std_value, dataset_std_value, dataset_std_value)
+# change 1
+dataset_mean = (dataset_mean_value,)
+dataset_std = (dataset_std_value,)
 batch_size = 50
 image_size = 64
 
@@ -13,12 +14,12 @@ image_size = 64
 src_dataset = "MNIST"
 src_encoder_restore = "snapshots/ADDA-source-encoder-final.pt"
 src_classifier_restore = "snapshots/ADDA-source-classifier-final.pt"
-src_model_trained = True
+src_model_trained = False  # Set to False to train from scratch
 
 # params for target dataset
 tgt_dataset = "USPS"
 tgt_encoder_restore = "snapshots/ADDA-target-encoder-final.pt"
-tgt_model_trained = True
+tgt_model_trained = False  # Set to False to train from scratch
 
 # params for setting up models
 model_root = "snapshots"
