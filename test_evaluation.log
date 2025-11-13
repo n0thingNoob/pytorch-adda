@@ -1,0 +1,54 @@
+use random seed: 1091
+Restore model from: /scratch/data/yijia/pytorch-adda/snapshots/ADDA-source-encoder-final.pt
+Restore model from: /scratch/data/yijia/pytorch-adda/snapshots/ADDA-source-classifier-final.pt
+Restore model from: /scratch/data/yijia/pytorch-adda/snapshots/ADDA-target-encoder-final.pt
+Restore model from: /scratch/data/yijia/pytorch-adda/snapshots/ADDA-critic-final.pt
+=== Training classifier for source domain ===
+>>> Source Encoder <<<
+LeNetEncoder(
+  (encoder): Sequential(
+    (0): Conv2d(1, 20, kernel_size=(5, 5), stride=(1, 1))
+    (1): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (2): ReLU()
+    (3): Conv2d(20, 50, kernel_size=(5, 5), stride=(1, 1))
+    (4): Dropout2d(p=0.5, inplace=False)
+    (5): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (6): ReLU()
+  )
+  (fc1): Linear(in_features=800, out_features=500, bias=True)
+)
+>>> Source Classifier <<<
+LeNetClassifier(
+  (fc2): Linear(in_features=500, out_features=10, bias=True)
+)
+=== Evaluating classifier for source domain ===
+Avg Loss = 0.10403746443070748, Avg Accuracy = 99.119997%
+=== Training encoder for target domain ===
+>>> Target Encoder <<<
+LeNetEncoder(
+  (encoder): Sequential(
+    (0): Conv2d(1, 20, kernel_size=(5, 5), stride=(1, 1))
+    (1): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (2): ReLU()
+    (3): Conv2d(20, 50, kernel_size=(5, 5), stride=(1, 1))
+    (4): Dropout2d(p=0.5, inplace=False)
+    (5): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (6): ReLU()
+  )
+  (fc1): Linear(in_features=800, out_features=500, bias=True)
+)
+>>> Critic <<<
+Discriminator(
+  (layer): Sequential(
+    (0): Linear(in_features=500, out_features=500, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=500, out_features=500, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=500, out_features=2, bias=True)
+  )
+)
+=== Evaluating classifier for encoded target domain ===
+>>> source only <<<
+Avg Loss = 0.42553574051769255, Avg Accuracy = 94.354838%
+>>> domain adaption <<<
+Avg Loss = 0.3661773758445424, Avg Accuracy = 97.311831%

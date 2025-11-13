@@ -14,12 +14,12 @@ image_size = 64
 src_dataset = "MNIST"
 src_encoder_restore = "snapshots/ADDA-source-encoder-final.pt"
 src_classifier_restore = "snapshots/ADDA-source-classifier-final.pt"
-src_model_trained = False  # Set to False to train from scratch
+src_model_trained = True  # Use pre-trained source model
 
 # params for target dataset
 tgt_dataset = "USPS"
 tgt_encoder_restore = "snapshots/ADDA-target-encoder-final.pt"
-tgt_model_trained = False  # Set to False to train from scratch
+tgt_model_trained = True  # Use pre-trained target model
 
 # params for setting up models
 model_root = "snapshots"
